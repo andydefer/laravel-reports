@@ -1,7 +1,3 @@
-Tu as raison ! Voici la correction avec l'interface obligatoire bien mise en avant :
-
----
-
 # Laravel Reports
 
 **Système de signalement polymorphique pour applications Laravel avec pattern Repository, DTOs, Enums et Value Objects**
