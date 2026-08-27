@@ -1,6 +1,6 @@
 {
     "name": "andydefer/laravel-reports",
-    "description": "Laravel package providing polymorphic reporting system with Repository pattern, DTOs, Enums, and Value Objects.",
+    "description": "Package Laravel de signalement polymorphique avec pattern Repository, DTOs, Enums et Value Objects.",
     "license": "MIT",
     "autoload": {
         "psr-4": {
