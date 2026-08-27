@@ -1,15 +1,15 @@
 {
-    "name": "andydefer/laravel-signalement",
+    "name": "andydefer/laravel-reports",
     "description": "Laravel package providing polymorphic reporting system with Repository pattern, DTOs, Enums, and Value Objects.",
     "license": "MIT",
     "autoload": {
         "psr-4": {
-            "AndyDefer\\LaravelSignalement\\": "src/"
+            "AndyDefer\\LaravelReports\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "AndyDefer\\LaravelSignalement\\Tests\\": "tests/"
+            "AndyDefer\\LaravelReports\\Tests\\": "tests/"
         }
     },
     "authors": [
@@ -21,9 +21,7 @@
     "require": {
         "php": "^8.2",
         "laravel/framework": "^12.0|^13.0|^14.0|^15.0",
-        "andydefer/laravel-repository": "^2.16.0",
-        "andydefer/domain-structures": "^1.27.1",
-        "andydefer/php-vo": "^0.20.1"
+        "andydefer/laravel-repository": "^2.16.1"
     },
     "require-dev": {
         "barryvdh/laravel-ide-helper": "^3.6",
@@ -39,7 +37,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "AndyDefer\\LaravelSignalement\\SignalementServiceProvider"
+                "AndyDefer\\LaravelReports\\ReportsServiceProvider"
             ]
         }
     },
