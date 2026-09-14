@@ -5,6 +5,8 @@ declare(strict_types=1);
 namespace AndyDefer\LaravelReports\Models;
 
 use AndyDefer\DomainStructures\Utils\StrictDataObject;
+use AndyDefer\LaravelRattachments\Contracts\RattachmentInterface;
+use AndyDefer\LaravelRattachments\Traits\HasRattachments;
 use AndyDefer\LaravelReports\Database\Factories\ReportFactory;
 use AndyDefer\PhpVo\ValueObjects\DateTimeVO;
 use AndyDefer\Repository\Casts\EnumCast;
@@ -38,11 +40,12 @@ use Illuminate\Support\Carbon;
  * @property-read \UnitEnum|null $type_enum
  * @property-read \UnitEnum|null $status_enum
  */
-final class Report extends Model
+final class Report extends Model implements RattachmentInterface
 {
     /** @use HasFactory<ReportFactory> */
     use HasFactory;
 
+    use HasRattachments;
     use SoftDeletes;
 
     protected $table = 'reports';
@@ -105,5 +108,39 @@ final class Report extends Model
             DateTimeVO::class,
             column: 'reviewed_at',
         );
+    }
+
+    // ==========================================================================
+    // RATTACHMENT CONSTRAINTS INTERFACE
+    // ==========================================================================
+
+    /**
+     * Define the targets this model is allowed to attach to.
+     *
+     * @return array<class-string, array<EnumerableInterface>>
+     */
+    public function allowedTargets(): array
+    {
+        return [];
+    }
+
+    /**
+     * Define the unique target constraints for this model.
+     *
+     * @return array<class-string, array<EnumerableInterface>>
+     */
+    public function uniqueTargets(): array
+    {
+        return [];
+    }
+
+    /**
+     * Define the targets this model is forbidden from attaching to.
+     *
+     * @return array<class-string, array<EnumerableInterface>>
+     */
+    public function disallowedTargets(): array
+    {
+        return [];
     }
 }
