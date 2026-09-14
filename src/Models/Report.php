@@ -5,10 +5,14 @@ declare(strict_types=1);
 namespace AndyDefer\LaravelReports\Models;
 
 use AndyDefer\DomainStructures\Utils\StrictDataObject;
+use AndyDefer\LaravelReports\Database\Factories\ReportFactory;
 use AndyDefer\PhpVo\ValueObjects\DateTimeVO;
 use AndyDefer\Repository\Casts\EnumCast;
+use AndyDefer\Repository\Contracts\EnumerableInterface;
 use AndyDefer\Repository\Proxies\AttributeProxy;
 use Illuminate\Database\Eloquent\Casts\Attribute;
+use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Carbon;
@@ -23,7 +27,7 @@ use Illuminate\Support\Carbon;
  * @property int $reportable_id
  * @property string $type
  * @property string|null $reason
- * @property string $status
+ * @property EnumerableInterface $status
  * @property StrictDataObject|null $metadata
  * @property DateTimeVO|null $reviewed_at
  * @property Carbon|null $created_at
@@ -36,6 +40,9 @@ use Illuminate\Support\Carbon;
  */
 final class Report extends Model
 {
+    /** @use HasFactory<ReportFactory> */
+    use HasFactory;
+
     use SoftDeletes;
 
     protected $table = 'reports';
@@ -61,6 +68,14 @@ final class Report extends Model
         'updated_at' => 'datetime',
         'deleted_at' => 'datetime',
     ];
+
+    /**
+     * Resolve the factory used by the model.
+     */
+    protected static function newFactory(): Factory
+    {
+        return ReportFactory::new();
+    }
 
     // ============ Relations ============
 

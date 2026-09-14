@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('reportable_id', 191);
 
             $table->string('type');
-            $table->mediumText('reason');
+            $table->longText('reason');
             $table->json('metadata')->nullable();
             $table->string('status');
             $table->timestamp('reviewed_at')->nullable();
