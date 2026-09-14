@@ -13,9 +13,9 @@ final class ReportRecord extends AbstractRecord
     public function __construct(
         public readonly ?int $id = null,
         public readonly ?string $reporter_type = null,
-        public readonly ?int $reporter_id = null,
+        public readonly ?string $reporter_id = null,
         public readonly ?string $reportable_type = null,
-        public readonly ?int $reportable_id = null,
+        public readonly ?string $reportable_id = null,
         public readonly ?string $type = null,
         public readonly ?string $reason = null,
         public readonly ?StrictDataObject $metadata = null,

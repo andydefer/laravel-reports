@@ -6,7 +6,7 @@ namespace AndyDefer\LaravelReports\Datas;
 
 use AndyDefer\DomainStructures\Abstracts\AbstractData;
 use AndyDefer\DomainStructures\Utils\StrictDataObject;
-use AndyDefer\PhpVo\ValueObjects\DateTimeVO;
+use AndyDefer\PhpVo\ValueObjects\DateTimeZuluVO;
 
 /**
  * Data DTO for Report responses.
@@ -18,11 +18,11 @@ use AndyDefer\PhpVo\ValueObjects\DateTimeVO;
  * $reportData = ReportData::from([
  *     'id' => 1,
  *     'reporter_type' => 'App\\Models\\User',
- *     'reporter_id' => 42,
- *     'reportable_type' => 'App\\Models\\Post',
- *     'reportable_id' => 15,
- *     'type' => 'spam',
- *     'reason' => 'Contenu promotionnel',
+ *     'reporter_id' => '550e8400-e29b-41d4-a716-446655440000',
+ *     'reportable_type' => 'App\\Models\\Drug',
+ *     'reportable_id' => '550e8400-e29b-41d4-a716-446655440001',
+ *     'type' => 'counterfeit',
+ *     'reason' => 'Médicament contrefait',
  *     'status' => 'pending',
  *     'metadata' => ['ip' => '192.168.1.1'],
  *     'created_at' => '2024-01-15T10:00:00Z',
@@ -33,16 +33,16 @@ final class ReportData extends AbstractData
     public function __construct(
         public readonly int $id,
         public readonly string $reporterType,
-        public readonly int $reporterId,
+        public readonly string $reporterId,
         public readonly string $reportableType,
-        public readonly int $reportableId,
+        public readonly string $reportableId,
         public readonly string $type,
         public readonly ?string $reason,
         public readonly string $status,
         public readonly ?StrictDataObject $metadata = null,
-        public readonly ?DateTimeVO $reviewedAt = null,
-        public readonly ?DateTimeVO $createdAt = null,
-        public readonly ?DateTimeVO $updatedAt = null,
-        public readonly ?DateTimeVO $deletedAt = null,
+        public readonly ?DateTimeZuluVO $reviewedAt = null,
+        public readonly ?DateTimeZuluVO $createdAt = null,
+        public readonly ?DateTimeZuluVO $updatedAt = null,
+        public readonly ?DateTimeZuluVO $deletedAt = null,
     ) {}
 }

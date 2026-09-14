@@ -12,8 +12,13 @@ return new class extends Migration
     {
         Schema::create('reports', function (Blueprint $table) {
             $table->id();
-            $table->morphs('reporter');
-            $table->morphs('reportable');
+
+            // Longueur limitée à 191 pour permettre l'index unique composite en utf8mb4
+            $table->string('reporter_type', 191);
+            $table->string('reporter_id', 191);
+            $table->string('reportable_type', 191);
+            $table->string('reportable_id', 191);
+
             $table->string('type');
             $table->mediumText('reason');
             $table->json('metadata')->nullable();
@@ -22,7 +27,15 @@ return new class extends Migration
             $table->timestamps();
             $table->softDeletes();
 
-            $table->unique(['reporter_type', 'reporter_id', 'reportable_type', 'reportable_id'], 'reports_unique');
+            $table->index(['reporter_type', 'reporter_id'], 'reports_reporter_index');
+            $table->index(['reportable_type', 'reportable_id'], 'reports_reportable_index');
+            $table->index('type', 'reports_type_index');
+            $table->index('status', 'reports_status_index');
+
+            $table->unique(
+                ['reporter_type', 'reporter_id', 'reportable_type', 'reportable_id'],
+                'reports_unique',
+            );
         });
     }
 
