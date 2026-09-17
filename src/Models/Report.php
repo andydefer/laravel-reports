@@ -27,7 +27,7 @@ use Illuminate\Support\Carbon;
  * @property int $reporter_id
  * @property string $reportable_type
  * @property int $reportable_id
- * @property string $type
+ * @property EnumerableInterface $type
  * @property string|null $reason
  * @property EnumerableInterface $status
  * @property StrictDataObject|null $metadata
